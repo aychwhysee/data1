@@ -19,6 +19,11 @@ interface FiniteSet {
     public boolean member(int elt);
     public FiniteSet add(int elt);
     public FiniteSet remove(int elt);
+    public FiniteSet union(FiniteSet u);
+    public FiniteSet inter(FiniteSet u);
+    public FiniteSet diff(FiniteSet u);
+    public boolean equal(FiniteSet u);
+    public boolean subset(FiniteSet u);
 }
 
 public class leaf implements FiniteSet {
@@ -41,6 +46,29 @@ public class leaf implements FiniteSet {
     
     public FiniteSet remove(int elt) {
         return this;
+    }
+    
+    public FiniteSet union(FiniteSet u) {
+        return u;
+    }
+    
+    public FiniteSet inter(FiniteSet u) {
+        return this;
+    }
+    
+    public FiniteSet diff(FiniteSet u) {
+        return this;
+        // Return the empty set? or null? since u contains the empty set too...
+    }
+    
+    public boolean equal(FiniteSet u) {
+        if (u == this) {
+            return true;
+        } else return false;
+    }
+    
+    public boolean subset(FiniteSet u) {
+        return true;
     }
     
     public static void main(String[] args) {
