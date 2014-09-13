@@ -42,7 +42,7 @@ public class Branch implements FiniteSet {
     
     public FiniteSet remove(int elt) {
         if (root == elt) {
-            return left.union(right).remove(elt);
+            return left.union(right);
         } else if (elt < root) {
             return new Branch(left.remove(elt), root, right);
         } else {
@@ -63,7 +63,11 @@ public class Branch implements FiniteSet {
     }
     
     public FiniteSet diff(FiniteSet u) {
-        return this;
+        if (u.member(root)) {
+            return left.union(right.union(u.remove(root)));
+        } else {
+            return right.diff(u).union(left.diff(u));
+        }
     }
     
     public boolean equal(FiniteSet u) {
