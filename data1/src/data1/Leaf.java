@@ -55,5 +55,6 @@ public class Leaf implements FiniteSet {
     
     public boolean subset(FiniteSet u) {
         return true;
+        // since an empty set is also a subset of a set?
     }
 }

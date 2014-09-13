@@ -34,18 +34,19 @@ public class Branch implements FiniteSet {
         if (root == elt) {
            return this;
         } else if (elt < root) {
-            return left.add(elt);
+            return new Branch(left.add(elt), root, right);
         } else {
-            return right.add(elt);
+            return new Branch(left, root, right.add(elt));
         }
     }
     
     public FiniteSet remove(int elt) {
-        return this;
+        this.remove(elt);
+        return this;    
     }
     
     public FiniteSet union(FiniteSet u) {
-        return this;
+        return left.union(right.union(u)).add(root);
     }
     
     public FiniteSet inter(FiniteSet u) {
