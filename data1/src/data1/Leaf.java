@@ -43,14 +43,11 @@ public class Leaf implements FiniteSet {
     }
     
     public FiniteSet diff(FiniteSet u) {
-        return this;
-        // Return the empty set? or null? since u contains the empty set too...
+        return u;
     }
     
     public boolean equal(FiniteSet u) {
-        if (u == this) {
-            return true;
-        } else return false;
+        return u.isEmptyHuh();
     }
     
     public boolean subset(FiniteSet u) {

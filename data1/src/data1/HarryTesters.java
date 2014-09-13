@@ -16,6 +16,11 @@ class HarryTesters {
         System.out.println(mT.isEmptyHuh() + " should be " + true);
         System.out.println(t1.isEmptyHuh() + " should be " + false);
         System.out.println(t1.add(7).isEmptyHuh() + " should be " + false);
-        
+        System.out.println(t2.remove(7).member(7) + " should be " + false);
+        System.out.println(t2.remove(5).cardinality() + " should be " + 1);
+        System.out.println(mT.equal(t1) + " should be " + false);
+        System.out.println(mT.equal(t2) + " should be " + false);
+        System.out.println(mT.equal(mT) + " should be " + true);
+        System.out.println(t1.equal(t2) + " should be " + false);
     } 
 }
