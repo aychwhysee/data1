@@ -1,7 +1,15 @@
 package data1;
 
 class HarryTesters {
+    
+    public static FiniteSet empty() {
+        return new Leaf();
+    }
+    
         public static void main(String[] args) {
+        System.out.println(empty().cardinality() + " should be " + 0);
+        System.out.println(empty().add(7).member(7) + " should be " + true);
+        System.out.println(empty().add(7).cardinality() + " should be " + 1);
         FiniteSet mT = new Leaf();
         FiniteSet t1 = new Branch(mT, 5, mT);
         FiniteSet t2 = new Branch(t1, 7, mT);
