@@ -1,7 +1,5 @@
 package data1;
 
-
-
 public class Branch implements FiniteSet {
     int root;
     FiniteSet left;
@@ -83,10 +81,13 @@ public class Branch implements FiniteSet {
     public FiniteSet diff(FiniteSet u) {
         // If root is a member of u, don't include it in our new tree.
         if (u.member(root)) {
-            return left.union(right.union(u.remove(root)).diff(u));
+         //   return left.union(right.union(u.remove(root)).diff(u));
+            return left.union(right).diff(u.remove(root));
+        //    return u.remove(root).union(left.union(right).diff(u));
         } else {
             // Check the rest and put it all together in the end (needs testing)
-            return right.diff(u).union(left.diff(u));
+        //    return right.diff(u).union(left.diff(u));
+            return left.union(right).diff(u);
         }
     }
     
@@ -99,10 +100,6 @@ public class Branch implements FiniteSet {
         // If root is not a member of u, then t cannot be a subset of u.
         if(!u.member(root)) {
             return false;
-            // We know that t is a subset of u if the root is a member of u
-            // and there are no other elements in t.
-        } else if ((this.left.isEmptyHuh()) || (this.right.isEmptyHuh())) {
-            return true;
             // Check everything else.
         } else {
             return this.left.union(this.right).subset(u);
