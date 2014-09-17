@@ -28,7 +28,7 @@ class HarryTesters {
         // Tests! Lots of tests!
         // Some tests actually test other methods (anything with t2 etc. tests
         // the add method, t5 tests union and such. Some tests will probably
-        // be repeated in concept.
+        // be repeated in concept (is this what properties are???????)
         
         // cardinality tests
         System.out.println("=== Cardinality tests ===");
@@ -108,6 +108,28 @@ class HarryTesters {
         
         // diff tests
         System.out.println("=== Difference tests ===");
+        System.out.println(t5.diff(mT).cardinality() + " should be " + 0);
+        System.out.println(t5.diff(t6).cardinality() + " should be " + 4);
+        System.out.println(t5.diff(t7).cardinality() + " should be " + 0);
+        System.out.println(t5.diff(t6).member(18) + " should be " + true);
+        System.out.println(t5.diff(t6).member(8) + " should be " + false);
+        
+        // equal tests
+        System.out.println("=== Equal tests ===");
+        System.out.println(mT.equal(mT) + " should be " + true);
+        System.out.println(mT.equal(t1) + " should be " + false);
+        System.out.println(t1.equal(t2) + " should be " + false);
+        System.out.println(t1.equal(t1) + " should be " + true);
+        System.out.println(t5.equal(t6) + " should be " + false);
+        System.out.println(t5.union(t6).equal(t7) + " should be " + false);
+        System.out.println(t5.equal(t7.add(5).add(7)) + " should be " + true);
+        
+        // subset tests
+        System.out.println("=== Subset tests ===");
+        System.out.println(t7.subset(t5) + " should be " + true);
+        System.out.println(mT.subset(mT) + " should be " + true);
+        System.out.println(mT.subset(t5) + " should be " + true);
+        System.out.println(t5.subset(t7) + " should be " + false);
         
     } 
 }
