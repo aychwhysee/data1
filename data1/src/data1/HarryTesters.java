@@ -157,11 +157,13 @@ class HarryTesters {
     // Inter, Union, and Equal
     public static void interUnionEqualP() {
         for (int i = 0; i < 50; i++) {
-            FiniteSet sX = randomSet(0, 100, 10);
-            FiniteSet sY = randomSet(0, 100, 10);
-            FiniteSet sZ = sX.union(sY);
-            if (!sX.inter(sZ).equal(sX) || !sY.inter(sZ).equal(sY)) {
-                System.out.println("No!!!!");
+            FiniteSet mySet = randomSet(0, 100, 10);
+            FiniteSet otherSet = randomSet(0, 100, 10);
+            if (mySet.union(otherSet).equal(mySet.inter(otherSet)) && !mySet.equal(otherSet)) {
+                System.out.println("nope");
+            }
+            if (!(mySet.union(otherSet).equal(mySet.inter(otherSet))) && mySet.equal(otherSet)) {
+                System.out.println("No.");
             }
         }
     }
@@ -185,6 +187,16 @@ class HarryTesters {
         }
     }
 
+    public static void interEqualP() {
+        for (int i = 0; i < 50; i++) {
+            FiniteSet sX = randomSet(0, 100, 10);
+            FiniteSet sY = randomSet(0, 100, 10);
+            FiniteSet sZ = sX.union(sY);
+            if (!sX.inter(sZ).equal(sX) || !sY.inter(sZ).equal(sY)) {
+                System.out.println("No!!!!");
+            }
+        }
+    }
     
 
     public static void main(String[] args) {
@@ -325,5 +337,6 @@ class HarryTesters {
         subsetUnionP();
         interUnionEqualP();
         memberUnionP();
+        interEqualP();
     }
 }
